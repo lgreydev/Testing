@@ -32,15 +32,18 @@ struct DecorativeImage: View {
     var name: String
 
     var body: some View {
-        Image(name)
-            .resizable()
-//            .aspectRatio(contentMode: .fit)
-//            .frame(maxWidth: 100)
-            .frame(width: 300, height: 300)
-//            .clipped()
+        GeometryReader { proxy in
+            Image(name)
+                .resizable()
+                .scaledToFit()
+    //            .scaledToFill()
+    //            .aspectRatio(contentMode: .fit)
+    //            .frame(maxWidth: 100)
+                .frame(width: proxy.size.width * 0.5)
+                .frame(width: proxy.size.width, height: proxy.size.height)
+    //            .clipped()
+        }
     }
-
-
 }
 
 
