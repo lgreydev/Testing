@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-            Icon(name: "camera.macro.circle.fill")
+        VStack {
+//            Icon(name: "camera.macro.circle.fill")
+            DecorativeImage(name: "apple")
+        }
+
     }
 }
 
@@ -24,6 +28,20 @@ struct Icon: View {
     }
 }
 
+struct DecorativeImage: View {
+    var name: String
+
+    var body: some View {
+        Image(name)
+            .resizable()
+//            .aspectRatio(contentMode: .fit)
+//            .frame(maxWidth: 100)
+            .frame(width: 300, height: 300)
+//            .clipped()
+    }
+
+
+}
 
 
 
