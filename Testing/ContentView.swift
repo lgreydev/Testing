@@ -9,60 +9,32 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-//            Icon(name: "")
-            DecorativeImage(name: "apple")
+        ZStack {
+
+            // MARK shapes
+            Rectangle()
+                .fill(.gray)
+                .frame(width: 200, height: 200)
+
+            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                .fill(.red)
+                .frame(width: 180, height: 180)
+
+            Capsule()
+                .fill(.green)
+                .frame(width: 150, height: 80)
+
+            Ellipse()
+                .fill(.blue)
+                .frame(width: 120, height: 70)
+
+            Circle()
+                .fill(.white)
+                .frame(width: 80, height: 50)
         }
 
     }
 }
-
-struct Icon: View {
-    var name: String
-    var tintColor: Color = .blue
-
-    var body: some View {
-        Image(systemName: name)
-            .foregroundColor(tintColor)
-            .frame(width: 30, height: 30)
-    }
-}
-
-struct DecorativeImage: View {
-    var name: String
-
-    var body: some View {
-            Image(name)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 200)
-    }
-}
-
-/*
-
- struct CategoryGrid: View {
-     var categories: [Category]
-
-     var body: some View {
-         LazyVGrid(columns: columns) {
-             ForEach(categories) { category in
-                 Text(category.name)
-                     .padding()
-                     .background(category.color)
-                     .foregroundColor(.white)
-                     .cornerRadius(10)
-             }
-         }
-         .padding()
-     }
-
-     private var columns: [GridItem] {
-         let item = GridItem(.flexible(minimum: 50, maximum: .infinity))
-         return [item, item]
-     }
- }
-*/
 
 
 struct ContentView_Previews: PreviewProvider {
