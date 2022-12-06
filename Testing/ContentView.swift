@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-//            Icon(name: "camera.macro.circle.fill")
+//            Icon(name: "")
             DecorativeImage(name: "apple")
         }
 
@@ -24,7 +24,7 @@ struct Icon: View {
     var body: some View {
         Image(systemName: name)
             .foregroundColor(tintColor)
-            .frame(width: 100, height: 100)
+            .frame(width: 30, height: 30)
     }
 }
 
@@ -32,20 +32,37 @@ struct DecorativeImage: View {
     var name: String
 
     var body: some View {
-        GeometryReader { proxy in
             Image(name)
                 .resizable()
-                .scaledToFit()
-    //            .scaledToFill()
-    //            .aspectRatio(contentMode: .fit)
-    //            .frame(maxWidth: 100)
-                .frame(width: proxy.size.width * 0.5)
-                .frame(width: proxy.size.width, height: proxy.size.height)
-    //            .clipped()
-        }
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200)
     }
 }
 
+/*
+
+ struct CategoryGrid: View {
+     var categories: [Category]
+
+     var body: some View {
+         LazyVGrid(columns: columns) {
+             ForEach(categories) { category in
+                 Text(category.name)
+                     .padding()
+                     .background(category.color)
+                     .foregroundColor(.white)
+                     .cornerRadius(10)
+             }
+         }
+         .padding()
+     }
+
+     private var columns: [GridItem] {
+         let item = GridItem(.flexible(minimum: 50, maximum: .infinity))
+         return [item, item]
+     }
+ }
+*/
 
 
 struct ContentView_Previews: PreviewProvider {
