@@ -54,10 +54,9 @@
 			isa = PBXGroup;
 			children = (
 				5E33A5822939926D008E7929 /* TestingApp.swift */,
-				5E33A5842939926D008E7929 /* ContentView.swift */,
 				5E33A5862939926E008E7929 /* Assets.xcassets */,
+				5E33A5B32941E3C0008E7929 /* View */,
 				5E33A5882939926E008E7929 /* Preview Content */,
-				5E33A5B12941D63A008E7929 /* PlayButton.swift */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -68,6 +67,15 @@
 				5E33A5892939926E008E7929 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5E33A5B32941E3C0008E7929 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E33A5842939926D008E7929 /* ContentView.swift */,
+				5E33A5B12941D63A008E7929 /* PlayButton.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
