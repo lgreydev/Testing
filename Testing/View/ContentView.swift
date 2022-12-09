@@ -16,20 +16,27 @@ struct ContentView: View {
 }
 
 
+struct CustomButton<Label>: View where Label: View {
+    let action: () -> Void
+    let label: () -> Label
+
+    @State private var isHighlighted = false
+}
+
+/*
+ var body: some View {
+     Button(isPlaying ? "Pause" : "Play") {
+         isPlaying.toggle()
+     }
+ }
+ */
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
 
-/*
- struct PlayButton: View {
-     @Binding var isPlaying: Bool
 
-     var body: some View {
-         Button(isPlaying ? "Pause" : "Play") {
-             isPlaying.toggle()
-         }
-     }
- }
- */
+
+
