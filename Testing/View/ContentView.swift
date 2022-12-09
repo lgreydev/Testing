@@ -8,28 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var isPlaying: Bool = false
+    @State var isOn: Bool = false
 
     var body: some View {
-        PlayButton(isPlaying: $isPlaying)
+        VStack(spacing: 10) {
+            Text(isOn ? "On" : "Off")
+                .font(.title)
+            Button(isOn ? "Test Button On" : "Test Button Off") {
+                isOn.toggle()
+            }
+
+            CustomButton(isOn: $isOn)
+        }
     }
 }
 
 
-struct CustomButton<Label>: View where Label: View {
-    let action: () -> Void
-    let label: () -> Label
+struct CustomButton: View {
+    @Binding var isOn: Bool
 
-    @State private var isHighlighted = false
+    var body: some View {
+        Button(isOn ? "Custom Button On" : "Custom Button Off") {
+            isOn.toggle()
+        }
+    }
 }
-
-/*
- var body: some View {
-     Button(isPlaying ? "Pause" : "Play") {
-         isPlaying.toggle()
-     }
- }
- */
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
