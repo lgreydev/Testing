@@ -9,20 +9,23 @@ import SwiftUI
 
 // MARK: Parent View
 struct ContentView: View {
-    @State private var isOn: Bool = false
+    @State private var isPresentingAlert = false
 
     var body: some View {
         VStack(spacing: 10) {
-            Text(isOn ? "On" : "Off")
-                .font(.title)
-            Button(isOn ? "Test Button On" : "Test Button Off") {
-                isOn.toggle()
+            Button {
+                isPresentingAlert = true
+            } label: {
+                Text("Present an Alert")
+            }
+            .alert(isPresented: $isPresentingAlert) {
+                Alert(title: Text("Alert!"))
             }
 
-            CustomButton(isOn: $isOn)
         }
     }
 }
+
 
 //MARK: Child View
 struct CustomButton: View {
