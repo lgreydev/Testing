@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+// MARK: Parent View
 struct ContentView: View {
-    @State var isOn: Bool = false
+    @State private var isOn: Bool = false
 
     var body: some View {
         VStack(spacing: 10) {
@@ -23,8 +24,9 @@ struct ContentView: View {
     }
 }
 
-
+//MARK: Child View
 struct CustomButton: View {
+//    @State var isOn: Bool
     @Binding var isOn: Bool
 
     var body: some View {
