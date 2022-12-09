@@ -17,11 +17,11 @@ struct ContentView: View {
                 isPresentingAlert = true
             } label: {
                 Text("Present an Alert")
+                    .font(.title)
             }
             .alert(isPresented: $isPresentingAlert) {
                 Alert(title: Text("Alert!"))
             }
-
         }
     }
 }
