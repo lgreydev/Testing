@@ -14,27 +14,30 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 10) {
             Button {
-                isPresentingAlert = true
+                isPresentingAlert = false
             } label: {
                 Text("Present an Alert")
                     .font(.title)
             }
             .alert(isPresented: $isPresentingAlert) {
-                Alert(title: Text("Alert!"))
+                CustomAlertView(text: "1", isBeingPresented: $isPresentingAlert)
             }
         }
     }
 }
 
+// CustomAlertView
 
 //MARK: Child View
-struct CustomButton: View {
-//    @State var isOn: Bool
-    @Binding var isOn: Bool
+struct CustomAlertView: View {
+    let text: Text
+
+    @Binding var isBeingPresented: Bool
+
 
     var body: some View {
-        Button(isOn ? "Custom Button On" : "Custom Button Off") {
-            isOn.toggle()
+        VStack {
+            Alert(title: Text(isBeingPresented ? "true" : "false"))
         }
     }
 }
