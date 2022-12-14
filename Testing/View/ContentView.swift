@@ -7,40 +7,31 @@
 
 import SwiftUI
 
-// MARK: Parent View
+
 struct ContentView: View {
-    @State private var isPresentingAlert = false
 
     var body: some View {
-        VStack(spacing: 10) {
-            Button {
-                isPresentingAlert = false
-            } label: {
-                Text("Present an Alert")
-                    .font(.title)
-            }
-            .alert(isPresented: $isPresentingAlert) {
-                CustomAlertView(text: "1", isBeingPresented: $isPresentingAlert)
-            }
+        ZStack() {
+//            Text("Home")
+//            Text("Option")
+//                .offset(y: 15)
+//                .padding(.bottom, 15)
+//            Text("Help")
+
+            Image("scotland")
+
+
+
+            Text("Scotland")
+                .padding(4)
+                .background(.black)
+                .foregroundColor(.white)
+                .offset(x: 100, y: 150)
+
         }
     }
 }
 
-// CustomAlertView
-
-//MARK: Child View
-struct CustomAlertView: View {
-    let text: Text
-
-    @Binding var isBeingPresented: Bool
-
-
-    var body: some View {
-        VStack {
-            Alert(title: Text(isBeingPresented ? "true" : "false"))
-        }
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
