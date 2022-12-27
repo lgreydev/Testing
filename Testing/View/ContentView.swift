@@ -11,28 +11,38 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
+    
         VStack {
             RoundedRectangle(cornerRadius: 8)
                 .frame(width: 200, height: 100)
-                .overlay(alignment: .topLeading) { Star(color: .red) }
-                .overlay(alignment: .topTrailing) { Star(color: .yellow) }
-                .overlay(alignment: .bottomLeading) { Star(color: .blue) }
-                .overlay(alignment: .bottomTrailing) { Star(color: .green) }
+                .overlay(alignment: .topLeading) { Star(colors: [.red, .yellow]) }
+                .overlay(alignment: .topTrailing) { Star(colors: [.blue, .orange]) }
+                .overlay(alignment: .bottomLeading) { Star(colors: [.indigo, .red]) }
+                .overlay(alignment: .bottomTrailing) { Star(colors: [.brown, .mint]) }
+            
+            Color.blue
+                .frame(width: 100, height: 100)
+                .overlay(alignment: .center) {
+                    Circle()
+                        .frame(width: 50, height: 50)
+                    Star(colors: [.red, .yellow])
+                }
+            
+            Spacer()
                 
         }
-       
     }
 }
 
 
 struct Star: View {
     
-    var color: Color //= .clear
+    var colors: [Color]
     
     var body: some View {
         Image(systemName: "star.fill")
 //            .foregroundColor(color)
-            .foregroundStyle(color)
+            .foregroundStyle(.linearGradient(colors: colors, startPoint: .top, endPoint: .bottom))
     }
 }
 
