@@ -11,24 +11,28 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        ZStack() {
-//            Text("Home")
-//            Text("Option")
-//                .offset(y: 15)
-//                .padding(.bottom, 15)
-//            Text("Help")
-
-            Image("scotland")
-
-
-
-            Text("Scotland")
-                .padding(4)
-                .background(.black)
-                .foregroundColor(.white)
-                .offset(x: 100, y: 150)
-
+        VStack {
+            RoundedRectangle(cornerRadius: 8)
+                .frame(width: 200, height: 100)
+                .overlay(alignment: .topLeading) { Star(color: .red) }
+                .overlay(alignment: .topTrailing) { Star(color: .yellow) }
+                .overlay(alignment: .bottomLeading) { Star(color: .blue) }
+                .overlay(alignment: .bottomTrailing) { Star(color: .green) }
+                
         }
+       
+    }
+}
+
+
+struct Star: View {
+    
+    var color: Color //= .clear
+    
+    var body: some View {
+        Image(systemName: "star.fill")
+//            .foregroundColor(color)
+            .foregroundStyle(color)
     }
 }
 
