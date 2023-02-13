@@ -6,45 +6,63 @@
 //
 
 import SwiftUI
+import Combine
 
 
 struct ContentView: View {
+    @State var selection: Contact?
+    
+    let contacts = [
+        Contact(name: "Bil", city: "Toronto"),
+        Contact(name: "Edik", city: "Montreal"),
+        Contact(name: "Olga", city: "Ottawa"),
+        Contact(name: "Natasha", city: "Edmonton"),
+        Contact(name: "Mike", city: "Vancouver"),
+        Contact(name: "Ket", city: "Calgary"),
+        Contact(name: "", city: ""),
+    ]
 
     var body: some View {
-    
         VStack {
-            RoundedRectangle(cornerRadius: 8)
-                .frame(width: 200, height: 100)
-                .overlay(alignment: .topLeading) { Star(colors: [.red, .yellow]) }
-                .overlay(alignment: .topTrailing) { Star(colors: [.blue, .orange]) }
-                .overlay(alignment: .bottomLeading) { Star(colors: [.indigo, .red]) }
-                .overlay(alignment: .bottomTrailing) { Star(colors: [.brown, .mint]) }
-            
-            Color.blue
-                .frame(width: 100, height: 100)
-                .overlay(alignment: .center) {
-                    Circle()
-                        .frame(width: 50, height: 50)
-                    Star(colors: [.red, .yellow])
+            HStack {
+                ForEach(contacts) { contact in
+                    Button(contact.name) { selection = contact }
                 }
+            }
             
-            Spacer()
-                
+               
+            if let c = selection {
+                Detail(contact: c).padding()
+            }
         }
     }
 }
 
-
-struct Star: View {
+final class Contact: ObservableObject, Identifiable {
     
-    var colors: [Color]
+    let id = UUID()
+    
+    @Published var name: String
+    @Published var city: String
+    
+    init(name: String, city: String) {
+        self.name = name
+        self.city = city
+    }
+    
+}
+
+struct Detail: View {
+   @ObservedObject var contact: Contact
     
     var body: some View {
-        Image(systemName: "star.fill")
-//            .foregroundColor(color)
-            .foregroundStyle(.linearGradient(colors: colors, startPoint: .top, endPoint: .bottom))
+        VStack {
+            Text(contact.name).bold()
+            Text(contact.city)
+        }
     }
 }
+
 
 
 struct ContentView_Previews: PreviewProvider {
