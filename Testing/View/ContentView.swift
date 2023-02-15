@@ -52,18 +52,26 @@ final class Contact: ObservableObject, Identifiable {
     
 }
 
+
 struct Detail: View {
-   @ObservedObject var contact: Contact
+    @ObservedObject var contact: Contact
+//    @StateObject var loader = ImageLoader()
     
     var body: some View {
-        VStack {
-            Text(contact.name).bold()
-            Text(contact.city)
+        HStack {
+//            loader.image
+            
+            VStack {
+                Text(contact.name).bold()
+                Text(contact.city)
+            }
+        }
+        .id(contact.id)
+        .onAppear {
+//            loader.load(image: contact.profile)
         }
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
